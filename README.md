@@ -30,4 +30,4 @@ Restart Nginx service and execute ``curl -i http://localhost/`` command in your 
 
 # Credits
 
-* Thanks to [David Beitey](http://git.io/djb) and his [nginx-custom-build](https://github.com/jcu-eresearch/nginx-custom-build) repo for giving the initial insigh how to automate Nginx build process.
+* Thanks to [David Beitey](http://git.io/djb) and his [nginx-custom-build](https://github.com/jcu-eresearch/nginx-custom-build) repo for giving the initial insight how to automate Nginx build process.
