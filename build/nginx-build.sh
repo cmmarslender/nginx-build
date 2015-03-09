@@ -17,7 +17,12 @@ yum install -y \
     git \
     wget \
     unzip \
-    tar
+    tar \
+    gcc-c++ \
+    pcre-dev \
+    pcre-devel \
+    zlib-devel \
+    make
 
 
 #Install source RPM for Nginx
