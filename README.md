@@ -22,11 +22,13 @@ cd build/RPMS/x86_64
 Install built Nginx rpm and add following snippet to the ``/etc/nginx/nginx.conf/default.conf`` file:
 
 ```
-pagespeed on
+pagespeed on;
 pagespeed FileCachePath /var/ngx_pagespeed_cache;
 ```
 
 Restart Nginx service and execute ``curl -i http://localhost/`` command in your terminal and if everything works right you should see ``X-Page-Speed: 1.9.32.3-4448`` header in the response.
+
+For more information about how to configure PageSpeed module, see Google PageSpeed [documentation](https://developers.google.com/speed/pagespeed/module).
 
 # Credits
 
