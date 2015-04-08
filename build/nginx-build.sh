@@ -29,7 +29,7 @@ yum install -y \
 pushd ~
 echo """[nginx]
 name=nginx repo
-baseurl=http://nginx.org/packages/centos/6/SRPMS/
+baseurl=http://nginx.org/packages/mainline/centos/6/SRPMS/
 gpgcheck=0
 enabled=1""" >> nginx.repo
 cp nginx.repo /etc/yum.repos.d/
