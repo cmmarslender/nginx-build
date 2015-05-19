@@ -1,6 +1,7 @@
 #!/bin/sh
 
-NPS_VERSION=1.9.32.3
+PAGESPEED_VERSION=1.9.32.3
+NAXSI_VERSION=0.53-2
 
 #Switch to sudo user
 sudo su -
@@ -42,13 +43,20 @@ popd
 pushd ~/rpmbuild/SOURCES
 
 #Google PageSpeed
-wget https://github.com/pagespeed/ngx_pagespeed/archive/release-${NPS_VERSION}-beta.zip -O release-${NPS_VERSION}-beta.zip
-unzip release-${NPS_VERSION}-beta.zip
-mv ngx_pagespeed-release-${NPS_VERSION}-beta/ ngx_pagespeed
+wget https://github.com/pagespeed/ngx_pagespeed/archive/release-${PAGESPEED_VERSION}-beta.zip -O release-${PAGESPEED_VERSION}-beta.zip
+unzip release-${PAGESPEED_VERSION}-beta.zip
+mv ngx_pagespeed-release-${PAGESPEED_VERSION}-beta/ ngx_pagespeed
+
+#Google PageSpeed PSOL
 pushd ~/rpmbuild/SOURCES/ngx_pagespeed/
-wget https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz -O ${NPS_VERSION}.tar.gz
-tar -xzvf ${NPS_VERSION}.tar.gz  # extracts to psol/
+wget https://dl.google.com/dl/page-speed/psol/${PAGESPEED_VERSION}.tar.gz -O ${PAGESPEED_VERSION}.tar.gz
+tar -xzvf ${PAGESPEED_VERSION}.tar.gz  # extracts to psol/
 popd
+
+#NAXSI
+wget https://github.com/nbs-system/naxsi/archive/${NAXSI_VERSION}.tar.gz -O naxsi-${NAXSI_VERSION}.tar.gz
+tar -xzvf naxsi-${NAXSI_VERSION}.tar.gz
+mv naxsi-${NAXSI_VERSION}/ naxsi
 
 popd
 
@@ -63,6 +71,7 @@ patch -p1 < nginx-spec.patch
 spectool -g -R nginx.spec
 yum-builddep -y nginx.spec
 rpmbuild -ba nginx.spec
+popd
 
 #Test installation and check output
 yum remove -y nginx nginx-devel
