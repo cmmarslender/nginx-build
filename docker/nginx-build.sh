@@ -4,7 +4,7 @@ PAGESPEED_VERSION=1.9.32.3
 NAXSI_VERSION=0.53-2
 
 #Switch to sudo user
-sudo su -
+su -
 
 #Clean up old nginx builds
 rm -rf ~/rpmbuild/RPMS/*/nginx-*.rpm
