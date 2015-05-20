@@ -1,10 +1,10 @@
 # About this Nginx
 
-This version of Nginx is built with support of [Google PageSpeed](https://github.com/pagespeed/ngx_pagespeed) (version 1.9.32.3) and [Naxsi](https://github.com/nbs-system/naxsi) (version 0.53-2) modules. See the build script for details of where these dependencies live.
+This version of Nginx is built with support of [Google PageSpeed](https://github.com/pagespeed/ngx_pagespeed) (version 1.9.32.3) and [Naxsi](https://github.com/nbs-system/naxsi) (version 0.53-2) modules using docker container. See the build-nginx.sh script for details of where these dependencies live.
 
 # Building Nginx
 
-1) Ensure Vagrant 1.6.5 or higher is installed.
+1) Ensure docker is installed.
 
 2) Run the following:
 
@@ -12,7 +12,7 @@ This version of Nginx is built with support of [Google PageSpeed](https://github
 git clone https://github.com/eugene-manuilov/nginx-build.git
 cd nginx-build
 ./build.sh
-cd build/RPMS/x86_64
+cd RPMS/x86_64
 ```
 
 3) Enjoy your new RPMs, available in the current directory.
@@ -33,7 +33,3 @@ For more information about how to configure PageSpeed module, see Google PageSpe
 # Testing Naxsi module
 
 Please, refer to the [Naxsi documentation](https://github.com/nbs-system/naxsi/wiki) to setup basic configuration and check if it works accordingly to the documentation.
-
-# Credits
-
-* Thanks to [David Beitey](http://git.io/djb) and his [nginx-custom-build](https://github.com/jcu-eresearch/nginx-custom-build) repo for giving the initial insight how to automate Nginx build process.

@@ -4,27 +4,10 @@ PAGESPEED_VERSION=1.9.32.3
 NAXSI_VERSION=0.53-2
 
 #Switch to sudo user
-sudo su -
+su -
 
 #Clean up old nginx builds
 rm -rf ~/rpmbuild/RPMS/*/nginx-*.rpm
-
-#Install required packages for building
-yum install -y \
-    rpm-build \
-    rpmdevtools \
-    yum-utils \
-    mercurial \
-    git \
-    wget \
-    unzip \
-    tar \
-    gcc-c++ \
-    pcre-dev \
-    pcre-devel \
-    zlib-devel \
-    make
-
 
 #Install source RPM for Nginx
 pushd ~
@@ -37,7 +20,6 @@ cp nginx.repo /etc/yum.repos.d/
 yumdownloader --source nginx
 rpm -ihv nginx*.src.rpm
 popd
-
 
 #Get various add-on modules for Nginx
 pushd ~/rpmbuild/SOURCES
@@ -61,11 +43,9 @@ mv naxsi-${NAXSI_VERSION}/ naxsi
 popd
 
 #Prep and patch the Nginx specfile for the RPMs
-#Note: expects to have the repository contents located in ~/rpmbuild/SPECS/
-#      or located at /vagrant 
 pushd ~/rpmbuild/SPECS
-if [ -d "/vagrant" ]; then
-    cp /vagrant/nginx-spec.patch ~/rpmbuild/SPECS/
+if [ -f "/tmp/nginx-spec.patch" ]; then
+    cp /tmp/nginx-spec.patch ~/rpmbuild/SPECS/
 fi
 patch -p1 < nginx-spec.patch
 spectool -g -R nginx.spec
