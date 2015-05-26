@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./docker-images/nginx.sh
+./builds/nginx.sh
