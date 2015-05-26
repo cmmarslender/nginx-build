@@ -52,8 +52,3 @@ spectool -g -R nginx.spec
 yum-builddep -y nginx.spec
 rpmbuild -ba nginx.spec
 popd
-
-#Test installation and check output
-yum remove -y nginx nginx-devel
-yum install -y ~/rpmbuild/RPMS/*/nginx-*.rpm
-nginx -V
