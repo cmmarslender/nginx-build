@@ -11,7 +11,7 @@ printf "${GREEN}===> Build Nginx...${NC}\n"
 
 IMAGE=$(docker images ${NAME} | awk '{ print $2 }' | grep -F "${VERSION}")
 if [ -z $IMAGE ]; then
-	pushd builds/nginx
+	pushd docker-images/nginx
 	printf "${GREEN}===> Build 10up/nginx image...${NC}\n"
 	docker build -q -t "${NAME}:${VERSION}" --rm .
 	popd
