@@ -2,6 +2,7 @@
 
 NAME=10up/yum
 VERSION=1.0.0
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 GREEN='\033[0;32m'
 NC='\033[0m'
@@ -17,6 +18,4 @@ if [ -z $IMAGE ]; then
 fi
 
 printf "${GREEN}===> Start the container and run yum repository...${NC}\n"
-
-PACKAGES=$(realpath packages)
-docker run -d -p 81:80 -v ${PACKAGES}:/var/packages ${NAME}:${VERSION}
+docker run -d -p 81:80 -v ${DIR}/packages:/var/packages ${NAME}:${VERSION}
