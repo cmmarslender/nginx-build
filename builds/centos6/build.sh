@@ -1,7 +1,6 @@
 #!/bin/sh
 
-PAGESPEED_VERSION=1.9.32.3
-NAXSI_VERSION=0.53-2
+PAGESPEED_VERSION=1.10.33.1
 
 #Switch to sudo user
 su -
@@ -33,13 +32,6 @@ mv ngx_pagespeed-release-${PAGESPEED_VERSION}-beta/ ngx_pagespeed
 pushd ~/rpmbuild/SOURCES/ngx_pagespeed/
 wget https://dl.google.com/dl/page-speed/psol/${PAGESPEED_VERSION}.tar.gz -O ${PAGESPEED_VERSION}.tar.gz
 tar -xzvf ${PAGESPEED_VERSION}.tar.gz  # extracts to psol/
-popd
-
-#NAXSI
-wget https://github.com/nbs-system/naxsi/archive/${NAXSI_VERSION}.tar.gz -O naxsi-${NAXSI_VERSION}.tar.gz
-tar -xzvf naxsi-${NAXSI_VERSION}.tar.gz
-mv naxsi-${NAXSI_VERSION}/ naxsi
-
 popd
 
 #Prep and patch the Nginx specfile for the RPMs

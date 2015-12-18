@@ -1,8 +1,8 @@
-# Custom Nginx build with Google PageSpeed and Naxsi modules.
-FROM centos:6.6
+# Custom Nginx build with Google PageSpeed module
+FROM centos:7.1
 
 # Declare image metadata
-LABEL version="1.0.0" description="This image is used to create RPM for custom Nginx build with Google PageSpeed and Naxsi modules." vendor="10up Inc"
+LABEL version="1.9.9" description="This image is used to create RPM for custom Nginx build with Google PageSpeed module" vendor="10up Inc"
 
 # Copy required files
 COPY build.sh /usr/local/bin/build-nginx

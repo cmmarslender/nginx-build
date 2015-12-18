@@ -1,7 +1,7 @@
 #!/bin/bash
 
-NAME=10up/nginx
-VERSION=1.0.0
+NAME=nginx/centos7
+VERSION=1.9.9
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -11,8 +11,8 @@ printf "${GREEN}===> Build Nginx...${NC}\n"
 
 IMAGE=$(docker images ${NAME} | awk '{ print $2 }' | grep -F "${VERSION}")
 if [ -z $IMAGE ]; then
-	pushd builds/nginx
-	printf "${GREEN}===> Build 10up/nginx image...${NC}\n"
+	pushd builds/centos7
+	printf "${GREEN}===> Build nginx/centos7 image...${NC}\n"
 	docker build -q -t "${NAME}:${VERSION}" --rm .
 	popd
 fi
@@ -26,9 +26,9 @@ if [ $EXITCODE -ne 0 ]; then
 	printf "${RED}===> Build process returned not empty code...${NC}\n"
 else
 	printf "${GREEN}===> Copy RMPs out of the container...${NC}\n"
-	docker cp $CONTAINERID:/root/rpmbuild/RPMS ./packages/
+	docker cp $CONTAINERID:/root/rpmbuild/RPMS ./packages/centos/7/
 	echo "RPMS copied..."
-	docker cp $CONTAINERID:/root/rpmbuild/SRPMS ./packages/
+	docker cp $CONTAINERID:/root/rpmbuild/SRPMS ./packages/centos/7/
 	echo "SRPMS copied..."
 fi
 

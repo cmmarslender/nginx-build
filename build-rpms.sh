@@ -1,3 +1,4 @@
 #!/bin/bash
 
-./builds/nginx.sh
+./builds/centos6.sh
+./builds/centos7.sh
