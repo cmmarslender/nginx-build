@@ -7,7 +7,7 @@ su -
 createrepo /var/packages
 
 # Create symlink to the packages folder
-ln -s /var/packages /var/www/html/CentOS
+ln -s /var/packages /var/www/html
 
 # Start Apache server in the foreground
 /usr/sbin/httpd -DFOREGROUND

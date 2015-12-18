@@ -1,5 +1,5 @@
 # Yum repository for 10up RPMs.
-FROM centos:6.6
+FROM centos:6.7
 
 # Declare image metadata
 LABEL version="1.0.0" description="This image is used to create Yum repository for 10up RPMs." vendor="10up Inc"
