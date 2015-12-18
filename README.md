@@ -2,7 +2,7 @@
 
 ### Launch yum repository
 
-1) Ensure docker is installed.
+1) Ensure docker is installed and running.
 
 2) Run the following:
 
@@ -29,3 +29,8 @@ gpgcheck=0
 ```
 sudo yum install -y nginx
 ```
+
+
+### Notes
+
+Docker CentOS Repo is here, for latest tags: https://hub.docker.com/_/centos/
