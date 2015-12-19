@@ -4,8 +4,8 @@
 su -
 
 # Create repositories
-createrepo /var/packages/CentOS/6/
-createrepo /var/packages/CentOS/7/
+createrepo /var/packages/CentOS/6/x86_64/
+createrepo /var/packages/CentOS/7/x86_64/
 
 # Delete the default webroot
 rm -rf /var/www/html
