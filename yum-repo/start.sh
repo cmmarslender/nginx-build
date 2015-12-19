@@ -3,8 +3,9 @@
 # Switch to the sudo user
 su -
 
-# Create repository
-createrepo /var/packages
+# Create repositories
+createrepo /var/packages/CentOS/6/
+createrepo /var/packages/CentOS/7/
 
 # Delete the default webroot
 rm -rf /var/www/html
