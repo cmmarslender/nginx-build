@@ -25,8 +25,9 @@ EXITCODE=$(docker wait $CONTAINERID)
 if [ $EXITCODE -ne 0 ]; then
 	printf "${RED}===> Build process returned not empty code...${NC}\n"
 else
-	printf "${GREEN}===> Copy RMPs out of the container...${NC}\n"
-	docker cp $CONTAINERID:/root/rpmbuild/RPMS/* ./packages/CentOS/6/
+	printf "${GREEN}===> Copy RPMs out of the container...${NC}\n"
+	docker cp $CONTAINERID:/root/rpmbuild/RPMS ./packages/CentOS/6/
+	mv ./packages/CentOS/6/RPMS/* ./packages/CentOS/6/
 	echo "RPMS copied..."
 	docker cp $CONTAINERID:/root/rpmbuild/SRPMS ./packages/CentOS/6/
 	echo "SRPMS copied..."
