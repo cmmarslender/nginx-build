@@ -28,6 +28,7 @@ else
 	printf "${GREEN}===> Copy RPMs out of the container...${NC}\n"
 	docker cp $CONTAINERID:/root/rpmbuild/RPMS ./packages/CentOS/7/
 	mv ./packages/CentOS/7/RPMS/* ./packages/CentOS/7/
+	rm -rf ./packages/CentOS/7/RPMS
 	echo "RPMS copied..."
 	docker cp $CONTAINERID:/root/rpmbuild/SRPMS ./packages/CentOS/7/
 	echo "SRPMS copied..."
