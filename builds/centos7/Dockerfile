@@ -2,7 +2,7 @@
 FROM centos:7.1.1503
 
 # Declare image metadata
-LABEL version="1.9.9" description="This image is used to create RPM for custom Nginx build with Google PageSpeed module" vendor="10up Inc"
+LABEL version="1.9.10" description="This image is used to create RPM for custom Nginx build with Google PageSpeed module" vendor="10up Inc"
 
 # Copy required files
 COPY build.sh /usr/local/bin/build-nginx

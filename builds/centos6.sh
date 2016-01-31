@@ -1,7 +1,8 @@
 #!/bin/bash
 
 NAME=nginx/centos6
-VERSION=1.9.9
+# Nginx Version
+VERSION=1.9.10
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
