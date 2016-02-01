@@ -14,7 +14,7 @@ index 7930be9..ed63640 100644
  %prep
  %setup -q
  cp %{SOURCE2} .
-+cp %{SOURCE13} .
++cp -R -p %{SOURCE13} .
  sed -e 's|%%DEFAULTSTART%%|2 3 4 5|g' -e 's|%%DEFAULTSTOP%%|0 1 6|g' \
      -e 's|%%PROVIDES%%|nginx|g' < %{SOURCE2} > nginx.init
  sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
