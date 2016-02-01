@@ -1,5 +1,5 @@
 diff --git a/nginx.spec b/nginx.spec
-index e034726..2e13e03 100644
+index 7930be9..dcd15ad 100644
 --- a/nginx.spec
 +++ b/nginx.spec
 @@ -68,6 +68,7 @@ Source9: nginx.upgrade.sh
