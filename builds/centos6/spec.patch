@@ -1,38 +1,38 @@
 diff --git a/nginx.spec b/nginx.spec
-index 7930be9..ed63640 100644
+index 8457fea..c9a0aa4 100644
 --- a/nginx.spec
 +++ b/nginx.spec
-@@ -68,6 +68,7 @@ Source9: nginx.upgrade.sh
- Source10: nginx.suse.logrotate
+@@ -144,6 +144,7 @@ Source10: nginx.suse.logrotate
  Source11: nginx-debug.service
  Source12: COPYRIGHT
-+Source13: ngx_pagespeed
+ Source13: njs-%{module_njs_shaid}.tar.gz
++Source14: ngx_pagespeed
  
  License: 2-clause BSD-like license
  
-@@ -88,6 +89,7 @@ a mail proxy server.
- %prep
+@@ -213,6 +214,7 @@ Dynamic nJScript module for nginx.
  %setup -q
+ tar xvzf %SOURCE13
  cp %{SOURCE2} .
-+cp -R -p %{SOURCE13} .
++cp -R -p %{SOURCE14} .
  sed -e 's|%%DEFAULTSTART%%|2 3 4 5|g' -e 's|%%DEFAULTSTOP%%|0 1 6|g' \
      -e 's|%%PROVIDES%%|nginx|g' < %{SOURCE2} > nginx.init
  sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
-@@ -133,6 +135,8 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
-         --with-debug \
-         %{?with_http2:--with-http_v2_module} \
-         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
-+	--with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
-+	--add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/ \
-         $*
+@@ -221,6 +223,8 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
+ %build
+ ./configure %{COMMON_CONFIGURE_ARGS} \
+     --with-cc-opt="%{WITH_CC_OPT}" \
++    --with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
++    --add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/ \
+     %{?perlldopts} \
+     --with-debug
  make %{?_smp_mflags}
- %{__mv} %{_builddir}/%{name}-%{version}/objs/nginx \
-@@ -175,6 +179,8 @@ make %{?_smp_mflags}
-         --with-ipv6 \
-         %{?with_http2:--with-http_v2_module} \
-         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
-+	--with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
-+	--add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/ \
-         $*
+@@ -240,6 +244,8 @@ make %{?_smp_mflags}
+     %{bdir}/objs/ngx_http_js_module-debug.so
+ ./configure %{COMMON_CONFIGURE_ARGS} \
+     --with-cc-opt="%{WITH_CC_OPT}" \
++    --with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
++    --add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/ \
+     %{?perlldopts}
  make %{?_smp_mflags}
  
