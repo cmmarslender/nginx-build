@@ -22,7 +22,6 @@ index 8457fea..2fd0847 100644
  %build
  ./configure %{COMMON_CONFIGURE_ARGS} \
      --with-cc-opt="%{WITH_CC_OPT}" \
-+    --with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
 +    --add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/ \
      %{?perlldopts} \
      --with-debug
