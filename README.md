@@ -7,7 +7,7 @@
 2) Run the following:
 
 ```
-git clone https://github.com/eugene-manuilov/nginx-build.git
+git clone https://github.com/cmmarslender/nginx-build.git
 cd nginx-build
 ./build-rpms.sh
 ./start-yum-repo.sh
