@@ -23,7 +23,7 @@ index 7930be9..ed63640 100644
          %{?with_http2:--with-http_v2_module} \
          --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
 +	--with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
-+	--add-module=%{_builddir}/%{name}-%{version}/ngx_pagespeed/ \
++	--add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/ \
          $*
  make %{?_smp_mflags}
  %{__mv} %{_builddir}/%{name}-%{version}/objs/nginx \
@@ -32,7 +32,7 @@ index 7930be9..ed63640 100644
          %{?with_http2:--with-http_v2_module} \
          --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
 +	--with-cc=/opt/rh/devtoolset-2/root/usr/bin/gcc \
-+	--add-module=%{_builddir}/%{name}-%{version}/ngx_pagespeed/ \
++	--add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/ \
          $*
  make %{?_smp_mflags}
  
