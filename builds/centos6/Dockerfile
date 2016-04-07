@@ -11,6 +11,8 @@ COPY spec.patch /tmp/nginx-spec.patch
 # First install wget
 RUN yum install -y wget
 
+RUN wget http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm && rpm -Uvh epel-release-6*.rpm
+
 # Need newer version of GCC than is provided by default
 RUN rpm --import https://linux.web.cern.ch/linux/scientific6/docs/repository/cern/slc6X/i386/RPM-GPG-KEY-cern
 RUN wget -O /etc/yum.repos.d/slc6-devtoolset.repo https://linux.web.cern.ch/linux/scientific6/docs/repository/cern/devtoolset/slc6-devtoolset.repo
