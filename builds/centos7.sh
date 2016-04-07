@@ -27,6 +27,8 @@ if [ $EXITCODE -ne 0 ]; then
 	printf "${RED}===> Build process returned not empty code...${NC}\n"
 else
 	printf "${GREEN}===> Copy RPMs out of the container...${NC}\n"
+	mkdir -p ./packages/CentOS/7/RPMS
+	mkdir -p ./packages/CentOS/7/SRPMS
 	docker cp $CONTAINERID:/root/rpmbuild/RPMS ./packages/CentOS/7/
 	mv ./packages/CentOS/7/RPMS/* ./packages/CentOS/7/
 	rm -rf ./packages/CentOS/7/RPMS
