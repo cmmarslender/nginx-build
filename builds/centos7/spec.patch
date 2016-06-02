@@ -1,8 +1,8 @@
 diff --git a/nginx.spec b/nginx.spec
-index 8457fea..2fd0847 100644
+index e769db3..e9f2f11 100644
 --- a/nginx.spec
 +++ b/nginx.spec
-@@ -144,6 +144,7 @@ Source10: nginx.suse.logrotate
+@@ -143,6 +143,7 @@ Source10: nginx.suse.logrotate
  Source11: nginx-debug.service
  Source12: COPYRIGHT
  Source13: njs-%{module_njs_shaid}.tar.gz
@@ -10,7 +10,7 @@ index 8457fea..2fd0847 100644
  
  License: 2-clause BSD-like license
  
-@@ -213,6 +214,7 @@ Dynamic nJScript module for nginx.
+@@ -212,6 +213,7 @@ Dynamic nJScript module for nginx.
  %setup -q
  tar xvzf %SOURCE13
  cp %{SOURCE2} .
@@ -18,19 +18,21 @@ index 8457fea..2fd0847 100644
  sed -e 's|%%DEFAULTSTART%%|2 3 4 5|g' -e 's|%%DEFAULTSTOP%%|0 1 6|g' \
      -e 's|%%PROVIDES%%|nginx|g' < %{SOURCE2} > nginx.init
  sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
-@@ -221,6 +223,8 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
+@@ -220,6 +222,7 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
  %build
  ./configure %{COMMON_CONFIGURE_ARGS} \
      --with-cc-opt="%{WITH_CC_OPT}" \
 +    --add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/ \
-     %{?perlldopts} \
      --with-debug
  make %{?_smp_mflags}
-@@ -240,6 +244,7 @@ make %{?_smp_mflags}
+ %{__mv} %{bdir}/objs/nginx \
+@@ -237,7 +240,8 @@ make %{?_smp_mflags}
+ %{__mv} %{bdir}/objs/ngx_http_js_module.so \
      %{bdir}/objs/ngx_http_js_module-debug.so
  ./configure %{COMMON_CONFIGURE_ARGS} \
-     --with-cc-opt="%{WITH_CC_OPT}" \
-+    --add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/ \
-     %{?perlldopts}
+-    --with-cc-opt="%{WITH_CC_OPT}"
++    --with-cc-opt="%{WITH_CC_OPT}" \
++    --add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/
  make %{?_smp_mflags}
  
+ %install
