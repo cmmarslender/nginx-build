@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PAGESPEED_VERSION=1.11.33.2
+PAGESPEED_VERSION=1.11.33.4
 
 #Switch to sudo user
 su -
