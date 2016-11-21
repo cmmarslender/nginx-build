@@ -22,7 +22,7 @@ index e769db3..e9f2f11 100644
  %build
  ./configure %{COMMON_CONFIGURE_ARGS} \
      --with-cc-opt="%{WITH_CC_OPT}" \
-+    --add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/ \
++    --add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed \
      --with-debug
  make %{?_smp_mflags}
  %{__mv} %{bdir}/objs/nginx \
@@ -32,7 +32,7 @@ index e769db3..e9f2f11 100644
  ./configure %{COMMON_CONFIGURE_ARGS} \
 -    --with-cc-opt="%{WITH_CC_OPT}"
 +    --with-cc-opt="%{WITH_CC_OPT}" \
-+    --add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed/
++    --add-module=%{_builddir}/%{name}-%{main_version}/ngx_pagespeed
  make %{?_smp_mflags}
  
  %install
