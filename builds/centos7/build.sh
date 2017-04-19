@@ -24,14 +24,16 @@ popd
 pushd ~/rpmbuild/SOURCES
 
 #Google PageSpeed
-wget https://github.com/pagespeed/ngx_pagespeed/archive/release-${PAGESPEED_VERSION}-beta.zip -O release-${PAGESPEED_VERSION}-beta.zip
-unzip release-${PAGESPEED_VERSION}-beta.zip
-mv ngx_pagespeed-release-${PAGESPEED_VERSION}-beta/ ngx_pagespeed
+wget https://github.com/pagespeed/ngx_pagespeed/archive/v${PAGESPEED_VERSION}-beta.zip -O v${PAGESPEED_VERSION}-beta.zip
+unzip v${PAGESPEED_VERSION}-beta.zip
+mv ngx_pagespeed-${PAGESPEED_VERSION}-beta/ ngx_pagespeed
 
 #Google PageSpeed PSOL
 pushd ~/rpmbuild/SOURCES/ngx_pagespeed/
-wget https://dl.google.com/dl/page-speed/psol/${PAGESPEED_VERSION}.tar.gz -O ${PAGESPEED_VERSION}.tar.gz
-tar -xzvf ${PAGESPEED_VERSION}.tar.gz  # extracts to psol/
+psol_url=https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz
+[ -e scripts/format_binary_url.sh ] && psol_url=$(scripts/format_binary_url.sh PSOL_BINARY_URL)
+wget ${psol_url}
+tar -xzvf $(basename ${psol_url})  # extracts to psol/
 popd
 
 #Prep and patch the Nginx specfile for the RPMs
